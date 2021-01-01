@@ -1,4 +1,4 @@
-const { tsConstructSignatureDeclaration } = require("@babel/types");
+//const { tsConstructSignatureDeclaration } = require("@babel/types");
 
 // Assignment Code
 
@@ -20,48 +20,53 @@ const { tsConstructSignatureDeclaration } = require("@babel/types");
 
 var generateBtn = document.querySelector("#generate");
 
-var questions = [
-  { q: "Select your password length", a: 0 },  
-  { q: "Do you want to include upper case letters?", a: "t" },
-  { q: "Do you want to include lower case letters?", a: "t" },
-  { q: "Do you want to include numbers?", a: "t" },
-  { q: "Do you want to include special characters?", a: "t" }
-];
 
 //Array of letters for lowercase and uppercase (with toUpper) criteria
-var pwdAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var arrAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 //Array of numbers for numeric criteria
-var pwdNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 //Array of special characters for spec.char. criteria
-var pwdSpecialChar = [
+var arrSpecChar = [
   "+", "-", "&&", "||", "!", "(",
   ")", "{", "}", "[", "]", "^",
-  "~", "*", "?", ":","\"","\\"];
+  "~", "*", "?", ":", "\"", "\\"];
 
-//For the first question, prompt a numerical response
-for (var i = 0; i = questions.q[0]; i) {
-  //prompt user to select password length
-  var passwordL = parseInt(prompt("Choose your password length (must be between 8 and 128 characters"));
-  
-  if (passwordL < 8 || passwordL > 128) {
-      alert("Your password does not meet the required length. Try again.");
-  }
-  else {
-    //Iterate through the remaining questions to get boolean responses
-    for (var j = 0; j = questions.length; j++) {
-      var answer = confirm(questions[i].q);
+  var pwdProfile = {
+    "length": 0,
+    "upperCase": true,
+    "lowerCase": false,
+    "numbers": true,
+    "specChar": true,
 
-      if ((answer === true && questions[i].a === "t") ||
-        (answer === false && questiona[i].a === "f")) {
-        
-      }
+    pwdLength: function () {
+      this.length = parseInt(prompt("Choose your password length (must be between 8 and 128 characters"));
+    },
 
+    pwdUpperCase: function () {
+      this.upperCase = confirm("Do you want to include upper case letters?");
+    },
+
+    pwdLowerCase: function () {
+      this.lowerCase = confirm("Do you want to include lower case letters?");
+    },
+
+    pwdNumbers: function () {
+      this.numbers = confirm("Do you want to include numbers?");
+    },
+
+    pwdSpecChar: function () {
+      this.specChar = confirm("Do you want to include special characters?");
     }
-  
-  }
-  
-}
+  };
 
+function reWriteProfile() {
+  console.log("length: " + pwdProfile.length);
+  console.log("upper case: " + pwdProfile.upperCase);
+  console.log("lower case: " + pwdProfile.lowerCase);
+  console.log("numbers: " + pwdProfile.numbers);
+  console.log("spec char: " + pwdProfile.specChar);
+  console.log("--------------------------------");
+};
 
 // Write password to the #password input
 function writePassword() {
@@ -69,6 +74,9 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+
+  
+
 
 }
 
@@ -78,8 +86,11 @@ generateBtn.addEventListener("click", writePassword);
 
 
 function generatePassword() {
-  
-  
-
-}
+  pwdProfile.pwdLength();
+  pwdProfile.pwdUpperCase();
+  pwdProfile.pwdLowerCase();
+  pwdProfile.pwdNumbers();
+  pwdProfile.pwdSpecChar();  
+  reWriteProfile();
+};
 
