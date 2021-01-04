@@ -47,38 +47,26 @@ var pwdProfile = {
 
   pwdUpperCase: function () {
     this.upperCase = confirm("Do you want to include upper case letters?");
-
+    password1 = Math.ceil(toUpper(alphabet.length) * Math.random()*Math.random());
   },
 
   pwdLowerCase: function () {
     this.lowerCase = confirm("Do you want to include lower case letters?");
+    password2 = Math.ceil(alphabet.length * Math.random()*Math.random());
   },
 
   pwdNumbers: function () {
     this.numbers = confirm("Do you want to include numbers?");
+    password3 = Math.ceil(numeric.length * Math.random()*Math.random());
   },
 
   pwdSpecChar: function () {
     this.specChar = confirm("Do you want to include special characters?");
+    password4 = Math.ceil(specChar.length * Math.random()*Math.random());
   }
 };
-
-function pwdCompiler() {
-  if (pwdProfile.upperCase === true) {
-    
-  }
-}
-
+        
 //userPassword = Math.floor(Math.random() * pwdProfile.length)
-
-function reWriteProfile() {
-  console.log("length: " + pwdProfile.length);
-  console.log("upper case: " + pwdProfile.upperCase);
-  console.log("lower case: " + pwdProfile.lowerCase);
-  console.log("numbers: " + pwdProfile.numbers);
-  console.log("spec char: " + pwdProfile.specChar);
-  console.log("--------------------------------");
-};
 
 // Write password to the #password input
 function writePassword() {
@@ -86,8 +74,12 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-
+  console.log("length: " + pwdProfile.length);
+  console.log("upper case: " + pwdProfile.upperCase);
+  console.log("lower case: " + pwdProfile.lowerCase);
+  console.log("numbers: " + pwdProfile.numbers);
+  console.log("spec char: " + pwdProfile.specChar);
+  console.log("--------------------------------");
 
 
 }
@@ -103,6 +95,6 @@ function generatePassword() {
   pwdProfile.pwdLowerCase();
   pwdProfile.pwdNumbers();
   pwdProfile.pwdSpecChar();
-  reWriteProfile();
-};
+  writePassword();
+}
 
