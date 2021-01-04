@@ -80,7 +80,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-function generatePassword(password) {
+function generatePassword() {
   pwdProfile.pwdLength();
   pwdProfile.pwdUpperCase();
   pwdProfile.pwdLowerCase();
@@ -88,7 +88,8 @@ function generatePassword(password) {
   pwdProfile.pwdSpecChar();
  
     if (pwdProfile.upperCase === true) {
-      compiled += string.toUpperCase();
+      var upper = string.toUpperCase();
+      compiled += upper;
       console.log("Upper Case Result = " + compiled);
       console.log(compiled.length);
     }
@@ -99,7 +100,7 @@ function generatePassword(password) {
       console.log(compiled.length);
     }
     
-    if (pwdProfile.numeric === true) {
+    if (pwdProfile.numbers === true) {
       compiled += numeric;
       console.log("Numeric Result = " + compiled);
       console.log(compiled.length);
@@ -112,8 +113,13 @@ function generatePassword(password) {
     }
     
     //var compiledLength = compiled.length;
-    //compiled = compiledLength * (Math.floor(Math.random() * pwdProfile.length));  
+    var passwordGenerated = "";
     
+    for (var i = 0; i < pwdProfile.length; i++) {
+      var randomChar = Math.floor(Math.random() * compiled.length);
+      passwordGenerated += compiled.charAt(randomChar); 
+    }
+    console.log(passwordGenerated + " is " + passwordGenerated.length + " characters long");
     
 
   // console.log("length: " + pwdProfile.length);
