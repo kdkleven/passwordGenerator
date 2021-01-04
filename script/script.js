@@ -47,22 +47,21 @@ var pwdProfile = {
 
   pwdUpperCase: function () {
     this.upperCase = confirm("Do you want to include upper case letters?");
-    password1 = Math.ceil(toUpper(alphabet.length) * Math.random()*Math.random());
   },
 
   pwdLowerCase: function () {
     this.lowerCase = confirm("Do you want to include lower case letters?");
-    password2 = Math.ceil(alphabet.length * Math.random()*Math.random());
+    
   },
 
   pwdNumbers: function () {
     this.numbers = confirm("Do you want to include numbers?");
-    password3 = Math.ceil(numeric.length * Math.random()*Math.random());
+    
   },
 
   pwdSpecChar: function () {
     this.specChar = confirm("Do you want to include special characters?");
-    password4 = Math.ceil(specChar.length * Math.random()*Math.random());
+    
   }
 };
         
@@ -81,7 +80,10 @@ function writePassword() {
   console.log("spec char: " + pwdProfile.specChar);
   console.log("--------------------------------");
 
-
+  password1 = Math.ceil(toUpper(alphabet.length) * Math.random()*Math.random());
+  password2 = Math.ceil(alphabet.length * Math.random()*Math.random());
+  password3 = Math.ceil(numeric.length * Math.random()*Math.random());
+  password4 = Math.ceil(specChar.length * Math.random()*Math.random());
 }
 
 // Add event listener to generate button
