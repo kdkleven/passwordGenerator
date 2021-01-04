@@ -20,18 +20,17 @@
 
 var generateBtn = document.querySelector("#generate");
 
-var alphabet = "abcdefghijklmnopqrstuvqxyz";
+var string = "abcdefghijklmnopqrstuvqxyz";
 var numeric = '0123456789';
-var specChar = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
-var character = "";
+var symbols = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+var compiled = "";
 
 var pwdProfile = {
   length: 0,
   upperCase: true,
-  lowerCase: false,
+  lowerCase: true,
   numbers: true,
   specChar: true,
-  userPassword: "",
 
   pwdLength: function (newLength) {
     newLength = parseInt(prompt("Choose your password length (must be between 8 and 128 characters"));
@@ -39,64 +38,89 @@ var pwdProfile = {
     while (newLength < 8 || newLength > 128) {
       newLength = parseInt(prompt("Choose your password length (must be between 8 and 128 characters"));
     }
-    alert("You chose a password length of " + newLength + " characters.");  
     this.length = newLength;
-    //console.log(this.length);
+    console.log("Length = " + this.length);
     return(newLength);
   },
 
   pwdUpperCase: function () {
     this.upperCase = confirm("Do you want to include upper case letters?");
+      console.log("UpperCase = " + this.upperCase);
   },
 
   pwdLowerCase: function () {
     this.lowerCase = confirm("Do you want to include lower case letters?");
-    
+    console.log("LowerCase = " + this.lowerCase);
   },
 
   pwdNumbers: function () {
     this.numbers = confirm("Do you want to include numbers?");
-    
+      console.log("Numeric = " + this.numbers);
   },
 
   pwdSpecChar: function () {
     this.specChar = confirm("Do you want to include special characters?");
-    
+      console.log("SpecChar = " + this.specChar);
   }
 };
         
-//userPassword = Math.floor(Math.random() * pwdProfile.length)
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  console.log("This is the password value: " + password);
   passwordText.value = password;
-  console.log("length: " + pwdProfile.length);
-  console.log("upper case: " + pwdProfile.upperCase);
-  console.log("lower case: " + pwdProfile.lowerCase);
-  console.log("numbers: " + pwdProfile.numbers);
-  console.log("spec char: " + pwdProfile.specChar);
-  console.log("--------------------------------");
-
-  password1 = Math.ceil(toUpper(alphabet.length) * Math.random()*Math.random());
-  password2 = Math.ceil(alphabet.length * Math.random()*Math.random());
-  password3 = Math.ceil(numeric.length * Math.random()*Math.random());
-  password4 = Math.ceil(specChar.length * Math.random()*Math.random());
+  
+  // password1 = Math.ceil(toUpper(alphabet.length) * Math.random()*Math.random());
+  // password2 = Math.ceil(alphabet.length * Math.random()*Math.random());
+  // password3 = Math.ceil(numeric.length * Math.random()*Math.random());
+  // password4 = Math.ceil(specChar.length * Math.random()*Math.random());
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
-function generatePassword() {
+function generatePassword(password) {
   pwdProfile.pwdLength();
   pwdProfile.pwdUpperCase();
   pwdProfile.pwdLowerCase();
   pwdProfile.pwdNumbers();
   pwdProfile.pwdSpecChar();
-  writePassword();
+ 
+    if (pwdProfile.upperCase === true) {
+      compiled += string.toUpperCase();
+      console.log("Upper Case Result = " + compiled);
+      console.log(compiled.length);
+    }
+    
+    if (pwdProfile.lowerCase === true) {
+      compiled += string;
+      console.log("Lower case Result = " + compiled);
+      console.log(compiled.length);
+    }
+    
+    if (pwdProfile.numeric === true) {
+      compiled += numeric;
+      console.log("Numeric Result = " + compiled);
+      console.log(compiled.length);
+    }
+    
+    if (pwdProfile.specChar === true) {
+      compiled += symbols;
+      console.log("Symbols Result = " + compiled);
+      console.log(compiled.length);
+    }
+    
+    //var compiledLength = compiled.length;
+    //compiled = compiledLength * (Math.floor(Math.random() * pwdProfile.length));  
+    
+    
+
+  // console.log("length: " + pwdProfile.length);
+  // console.log("upper case: " + pwdProfile.upperCase);
+  // console.log("lower case: " + pwdProfile.lowerCase);
+  // console.log("numbers: " + pwdProfile.numbers);
+  // console.log("spec char: " + pwdProfile.specChar);
+  // console.log("--------------------------------");
 }
 
