@@ -1,29 +1,13 @@
-//const { tsConstructSignatureDeclaration } = require("@babel/types");
 
-// Assignment Code
-
-
-//PSUEDOCODE - ACCEPTANCE CRITERIA
-// Prompt user to select from a series of criteria, including:
-// Select OK vs Cancel (prompt)
-// Alert password length (between 8 and 128 characters)
-// prompt lowercase
-// prompt uppercase
-// prompt numeric
-// prompt special characters
-// validate each input
-// at least one character type should be selected
-// generate a pasword that matches the selected criteria
-// randomly generate password 
-// 
-// display the password in an alert or written to the page
-
+// Declare a variable for the #generate ID
 var generateBtn = document.querySelector("#generate");
 
+// Declare variables containing all letters, numbers, and symbols
 var letters = 'abcdefghijklmnopqrstuvqxyz';
 var numbers = '0123456789';
 var symbols = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
 
+// Declare an object variable containing the necessary criteria
 var profile = {
   length: 0,
   upperCase: true,
@@ -32,10 +16,10 @@ var profile = {
   specChar: true,
 
   pwdLength: function (newLength) {
-    newLength = parseInt(prompt("Choose your password length (must be between 8 and 128 characters"));
+    newLength = parseInt(prompt("Choose your password length (must be a number between 8 and 128 characters"));
 
-    while (newLength < 8 || newLength > 128) {
-      newLength = parseInt(prompt("Choose your password length (must be between 8 and 128 characters"));
+    while (isNaN(newLength) || newLength < 8 || newLength > 128) {
+      newLength = parseInt(prompt("Choose your password length (must be a number between 8 and 128 characters"));
     }
     this.length = newLength;
     console.log("Length = " + this.length);
@@ -69,11 +53,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   console.log("This is the password value: " + password);
   passwordText.value = password;
-
-  // password1 = Math.ceil(toUpper(alphabet.length) * Math.random()*Math.random());
-  // password2 = Math.ceil(alphabet.length * Math.random()*Math.random());
-  // password3 = Math.ceil(numeric.length * Math.random()*Math.random());
-  // password4 = Math.ceil(specChar.length * Math.random()*Math.random());
 }
 
 // Add event listener to generate button
