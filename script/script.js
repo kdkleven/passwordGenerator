@@ -8,10 +8,7 @@ var lowerAlpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p
 var numbers = [0,1,2,3,4,5,6,7,8,9];
 var symbols = ["!","@","#","$","%","^","&","*","(",")","_","+","~","`","|","}","{","[","]","\:",";","?",">","<",",",".","/","-","="];
 
-var upperPassword = "";
-var lowerPassword = "";
-var numbersPassword = "";
-var symbolsPassword = "";
+var userPassword = "";
 
 // Declare an object variable containing the necessary criteria
 var profile = {
@@ -24,11 +21,10 @@ var profile = {
   pwdLength: function () {
     profile.length = parseInt(prompt("Choose your password length (must be a number between 8 and 128 characters"));
     
-    while (profile.length < 8 || profile.length > 128 || profile.length === null || profile.length == '')  {
+    while (profile.length < 8 || profile.length > 128 || isNaN(profile.length) || profile.length == null)  {
       profile.length = parseInt(prompt("Choose your password length (must be a number between 8 and 128 characters"));
     }
     console.log("length: " + this.length);  
-    
   },
 
   pwdUpperCase: function () {
@@ -38,11 +34,11 @@ var profile = {
     if (profile.upperCase === true) {
       for (var u = 0; u < profile.length; u++) {
         var upperRandom = Math.floor(Math.random() * upperAlpha.length);
-        upperPassword += upperAlpha[upperRandom];  
+        userPassword += upperAlpha[upperRandom];
       }
-    console.log("upperPassword: " + upperPassword + " length is " + upperPassword.length + " and type is " + typeof(upperPassword));
+      console.log("upperPassword: " + userPassword + " length is " + userPassword.length + " and type is " + typeof(userPassword));
     }
-    return(upperPassword);
+    return(userPassword);
   },
 
   pwdLowerCase: function () {    
@@ -52,11 +48,11 @@ var profile = {
     if (profile.lowerCase === true) {
       for (var l = 0; l < profile.length; l++) {
         var lowerRandom = Math.floor(Math.random() * lowerAlpha.length);
-        lowerPassword += lowerAlpha[lowerRandom];  
+        userPassword += lowerAlpha[lowerRandom];  
       }
-    console.log("lowerPassword: " + lowerPassword + " length is " + lowerPassword.length + " and type is " + typeof(lowerPassword));
+    console.log("lowerPassword: " + userPassword + " length is " + userPassword.length + " and type is " + typeof(userPassword));
     }
-    return(lowerPassword);
+    return(userPassword);
   },
 
   pwdNumeric: function () {    
@@ -66,11 +62,11 @@ var profile = {
     if (profile.numeric === true) {
       for (var n = 0; n < profile.length; n++) {
         var numbersRandom = Math.floor(Math.random() * numbers.length);
-        numbersPassword += numbers[numbersRandom];  
+        userPassword += numbers[numbersRandom];  
       }
-    console.log("numbers: " + numbersPassword + " length is " + numbersPassword.length + " and type is " + typeof(numbersPassword));
+    console.log("numbers: " + userPassword + " length is " + userPassword.length + " and type is " + typeof(userPassword));
     }
-    return(numbersPassword);
+    return(userPassword);
   },
 
   pwdSpecChar: function () {   
@@ -80,15 +76,15 @@ var profile = {
     if (profile.specChar === true) {
       for (var s = 0; s < profile.length; s++) {
         var symbolsRandom = Math.floor(Math.random() * symbols.length);
-        symbolsPassword += symbols[symbolsRandom];  
+        userPassword += symbols[symbolsRandom];  
       }
-    console.log("symbols: " + symbolsPassword + " length is " + symbolsPassword.length + " and type is " + typeof(symbolsPassword));
+    console.log("symbols: " + userPassword + " length is " + userPassword.length + " and type is " + typeof(userPassword));
     }
     else if (profile.upperCase === false && profile.lowerCase === false && profile.numeric === false) {
       alert("At least one criteria must be selected. Please generate a new password.");
       generatePassword();
     }
-    return(symbolsPassword);  
+    return(userPassword);  
   }
 };
 
@@ -110,14 +106,19 @@ function generatePassword() {
   profile.pwdNumeric();
   profile.pwdSpecChar();
 
-  var combined = upperPassword + lowerPassword + numbersPassword + symbolsPassword;
+  var combined = userPassword;
+  console.log("combined: " + combined);
   var combinedLength = combined.length;
+  console.log("combinedLength: " + combinedLength);
   var result = "";
 
-  for (var i = 0; i < combinedLength; i++) {
+  for (var i = 0; i < profile.length; i++) {
     result += combined.charAt(Math.floor(Math.random() * combinedLength));
   }
-  return result;
+  console.log(result);
+  
+  userPassword = "";
 
+  return result;
 }
 
