@@ -118,26 +118,28 @@ generateBtn.addEventListener("click", writePassword);
 // Generate the password
 function generatePassword() {
   // ask user for various criteria
-  profile.pwdLength();
-  profile.pwdUpperCase();
-  profile.pwdLowerCase();
-  profile.pwdNumeric();
-  profile.pwdSpecChar();
-
-  // declare password length and result variables
-  var rawPasswordLength = profile.rawPassword.length;
-  var result = "";
-
-  // iterate through the raw password and use math.random to generate a random password that meets the length of the user's input
-  for (var i = 0; i < profile.length; i++) {
-    result += profile.rawPassword.charAt(Math.floor(Math.random() * rawPasswordLength));
-  }
-
-  // reset raw password
-  profile.rawPassword = "";
-
-  // return generated password
-  return result;
   
+  while (profile.length !== null) {
+    profile.pwdLength();
+    profile.pwdUpperCase();
+    profile.pwdLowerCase();
+    profile.pwdNumeric();
+    profile.pwdSpecChar();
+
+    // declare password length and result variables
+    var rawPasswordLength = profile.rawPassword.length;
+    var result = "";
+
+    // iterate through the raw password and use math.random to generate a random password that meets the length of the user's input
+    for (var i = 0; i < profile.length; i++) {
+      result += profile.rawPassword.charAt(Math.floor(Math.random() * rawPasswordLength));
+    }
+
+    // reset raw password
+    profile.rawPassword = "";
+
+    // return generated password
+    return result;
+  }
 }
 
