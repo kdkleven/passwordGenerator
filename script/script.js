@@ -134,10 +134,7 @@ function generatePassword() {
     for (var i = 0; i < profile.length; i++) {
       result += profile.rawPassword.charAt(Math.floor(Math.random() * rawPasswordLength));
     }
-
-    // reset raw password
-    profile.rawPassword = "";
-
+    
     // return generated password
     return result;
   }

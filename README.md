@@ -28,4 +28,4 @@ The following image shows the web application's appearance and functionality:
 ![password generator demo](./Assets/03-javascript-homework-demo.png)
 
 ## The Deliverable
-https://kdkleven.github.io/uofm-bootcamp-homework-03/
+[Kyle's Password Generator] (https://kdkleven.github.io/uofm-bootcamp-homework-03/script/index.html)
