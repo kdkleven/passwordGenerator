@@ -28,4 +28,4 @@ The following image shows the web application's appearance and functionality:
 ![password generator demo](/assets/03-javascript-homework-demo.png)
 
 ## The Deliverable
-https://kdkleven.github.io/passwordGenerator/
+https://kdkleven.github.io/passwordGenerator/index.html
